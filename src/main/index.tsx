@@ -1,18 +1,18 @@
-import "@babel/polyfill";
-import "github-markdown-css/github-markdown.css";
-import "katex/dist/katex.min.css";
-import "highlight.js/styles/default.css";
+import '@babel/polyfill'
+import 'github-markdown-css/github-markdown.css'
+import 'katex/dist/katex.min.css'
+import 'highlight.js/styles/default.css'
 
-import React from "react";
-import ReactDOM from "react-dom";
-import Proxy from "./WorkerProxy";
-import { App } from "./components/App";
-import { AppState } from "../types";
-import { WorkerAPI } from "../worker";
-import { Provider } from "./contexts/RootStateContext";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Proxy from './WorkerProxy'
+import { App } from './components/App'
+import { AppState } from '../types'
+import { WorkerAPI } from '../worker'
+import { Provider } from './contexts/RootStateContext'
 
 // CONSTANTS
-const SHOW_PREVIEW_KEY = "$mdbuf-state";
+const SHOW_PREVIEW_KEY = '$mdbuf-state'
 
 async function saveState(proxy: WorkerAPI, state: AppState): Promise<void> {
   const partialState: AppState = {
@@ -21,52 +21,52 @@ async function saveState(proxy: WorkerAPI, state: AppState): Promise<void> {
     toolMode: state.toolMode,
     editorMode: state.editorMode,
     // they are heavy
-    raw: "",
+    raw: '',
     outline: [],
-    html: ""
-  };
+    html: ''
+  }
 
   // TODO: Save on background worker
-  const seriarized = JSON.stringify(partialState);
-  localStorage.setItem(SHOW_PREVIEW_KEY, seriarized);
+  const seriarized = JSON.stringify(partialState)
+  localStorage.setItem(SHOW_PREVIEW_KEY, seriarized)
 }
 
 async function loadFullData(proxy: WorkerAPI): Promise<AppState> {
-  let persisited: any = null;
+  let persisited: any = null
   try {
     const stateStr: string | null = window.localStorage.getItem(
       SHOW_PREVIEW_KEY
-    );
-    persisited = JSON.parse(stateStr as any);
+    )
+    persisited = JSON.parse(stateStr as any)
     if (!(persisited instanceof Object)) {
-      throw new Error("legacy state");
+      throw new Error('legacy state')
     }
   } catch (e) {
     persisited = {
       showPreview: true,
-      toolMode: "preview",
-      editorMode: "textarea",
+      toolMode: 'preview',
+      editorMode: 'textarea',
 
       // no
       wordCount: 0,
-      raw: "",
+      raw: '',
       outline: [],
-      html: ""
-    };
+      html: ''
+    }
   }
 
-  const lastState = await proxy.getLastState();
+  const lastState = await proxy.getLastState()
 
   return {
     ...persisited,
     ...lastState,
     wordCount: Array.from(lastState.raw).length
-  };
+  }
 }
 
 const main = async () => {
-  const proxy: WorkerAPI = await new (Proxy as any)();
-  const initialState = await loadFullData(proxy);
+  const proxy: WorkerAPI = await new (Proxy as any)()
+  const initialState = await loadFullData(proxy)
 
   ReactDOM.render(
     <Provider reducer={t => t} initialState={initialState}>
@@ -74,14 +74,14 @@ const main = async () => {
         proxy={proxy}
         initialState={initialState}
         onUpdateState={newState => {
-          console.log("save state");
-          saveState(proxy, newState);
+          console.log('save state')
+          saveState(proxy, newState)
         }}
       />
     </Provider>,
 
-    document.querySelector("#root")
-  );
-};
+    document.querySelector('#root')
+  )
+}
 
-main();
+main()

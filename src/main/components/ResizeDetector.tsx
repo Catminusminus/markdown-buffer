@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from "react";
+import React, { useRef, useLayoutEffect } from 'react'
 
 /*
 How to use
@@ -28,50 +28,48 @@ How to use
   </ResizeDetector>
 */
 
-type Rect = {
-  x: string;
-  y: string;
-  width: string;
-  height: string;
-  top: string;
-  right: string;
-  bottom: string;
-  left: string;
-};
+interface Rect {
+  x: string
+  y: string
+  width: string
+  height: string
+  top: string
+  right: string
+  bottom: string
+  left: string
+}
 
 export function ResizeDetector(props: {
-  children: any;
-  onResize: (rect: Rect) => void;
-  style?: React.CSSProperties;
+  children: any
+  onResize: (rect: Rect) => void
+  style?: React.CSSProperties
 }) {
-  const containerRef: React.RefObject<HTMLDivElement> = useRef(null as any);
-  useLayoutEffect(
-    () => {
-      if (containerRef.current) {
-        const observer = new ResizeObserver(
-          (
-            entries: Array<{
-              target: HTMLElement;
-              contentRect: Rect;
-            }>
-          ) => {
-            entries.forEach(({ contentRect }) => {
-              props.onResize(contentRect);
-            });
-          }
-        );
-        observer.observe(containerRef.current);
-        return () => {
-          observer.unobserve(containerRef.current);
-          observer.disconnect();
-        };
+  const containerRef: React.RefObject<HTMLDivElement> = useRef(null as any)
+  useLayoutEffect(() => {
+    const container = containerRef.current
+    if (container) {
+      const observer = new ResizeObserver(
+        (
+          entries: {
+            target: HTMLElement
+            contentRect: Rect
+          }[]
+        ) => {
+          entries.forEach(({ contentRect }) => {
+            props.onResize(contentRect)
+          })
+        }
+      )
+      observer.observe(container)
+      return () => {
+        observer.unobserve(container)
+        observer.disconnect()
       }
-    },
-    [props.children]
-  );
+    }
+  }, [props, props.children])
   return (
     <div style={props.style} ref={containerRef}>
       {props.children}
     </div>
-  );
+  )
 }

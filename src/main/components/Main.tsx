@@ -1,27 +1,28 @@
-import React, { SyntheticEvent } from "react";
-import styled from "styled-components";
-import Loadable from "react-loadable";
+import React, { SyntheticEvent } from 'react'
+import styled from 'styled-components'
+import Loadable from 'react-loadable'
 
-import { Textarea } from "./TextareaEditor";
-import { Preview } from "./Preview";
-import { Outline } from "./Outline";
-import { Help } from "./Help";
-import { ToolMode, EditorMode } from "../../types";
-import { editor } from "monaco-editor";
+import { Textarea } from './TextareaEditor'
+import { Preview } from './Preview'
+import { Outline } from './Outline'
+import { Help } from './Help'
+import { ToolMode, EditorMode } from '../../types'
 
 const Loading = () => (
-  <div style={{ color: "#fff", paddingLeft: 20 }}>Loading...</div>
-);
+  <div style={{ color: '#fff', paddingLeft: 20 }}>Loading...</div>
+)
 
 const CodeMirrorEditor = Loadable({
-  loader: () => import("./CodeMirrorEditor"),
+  loader: () => import('./CodeMirrorEditor'),
+  // eslint-disable-next-line react/display-name
   loading: () => <Loading />
-});
+})
 
 const MonacoEditor = Loadable({
-  loader: () => import("./MonacoEditor"),
+  loader: () => import('./MonacoEditor'),
+  // eslint-disable-next-line react/display-name
   loading: () => <Loading />
-});
+})
 
 export const Main = React.memo(function Main({
   editorRef,
@@ -37,35 +38,35 @@ export const Main = React.memo(function Main({
   previewContainerRef,
   showPreview
 }: {
-  html: string;
-  raw: string;
-  editorMode: EditorMode;
-  toolMode: ToolMode;
-  showPreview: boolean;
-  outline: Array<any>;
-  editorRef: React.RefObject<HTMLTextAreaElement>;
-  previewContainerRef: React.RefObject<HTMLDivElement>;
-  onChangeToolMode: (value: ToolMode) => void;
-  onChangeValue: (value: string) => void;
-  onSelectOutlineHeading: (offset: number) => void;
-  onWheel: (event: SyntheticEvent<HTMLTextAreaElement>) => void;
+  html: string
+  raw: string
+  editorMode: EditorMode
+  toolMode: ToolMode
+  showPreview: boolean
+  outline: any[]
+  editorRef: React.RefObject<HTMLTextAreaElement>
+  previewContainerRef: React.RefObject<HTMLDivElement>
+  onChangeToolMode: (value: ToolMode) => void
+  onChangeValue: (value: string) => void
+  onSelectOutlineHeading: (offset: number) => void
+  onWheel: (event: SyntheticEvent<HTMLTextAreaElement>) => void
 }) {
   return (
     <>
       <Container>
         <Centered>
           <EditorContainer>
-            {editorMode === "monaco" && (
+            {editorMode === 'monaco' && (
               <MonacoEditor
                 value={raw}
-                width={showPreview ? "50vw" : "100vw"}
+                width={showPreview ? '50vw' : '100vw'}
                 onChangeValue={onChangeValue}
               />
             )}
-            {editorMode === "codemirror" && (
+            {editorMode === 'codemirror' && (
               <CodeMirrorEditor value={raw} onChangeValue={onChangeValue} />
             )}
-            {editorMode === "textarea" && (
+            {editorMode === 'textarea' && (
               <Textarea
                 ref={editorRef}
                 raw={raw}
@@ -79,7 +80,7 @@ export const Main = React.memo(function Main({
       {showPreview && (
         <SideTools>
           <ToolTabsContainer>
-            {["preview", "outline", "help"].map(mode => {
+            {['preview', 'outline', 'help'].map(mode => {
               return (
                 <TabButton
                   key={mode}
@@ -88,12 +89,12 @@ export const Main = React.memo(function Main({
                 >
                   {mode}
                 </TabButton>
-              );
+              )
             })}
           </ToolTabsContainer>
           <PreviewContainer ref={previewContainerRef}>
-            {toolMode === "preview" && <Preview html={html} />}
-            {toolMode === "outline" && (
+            {toolMode === 'preview' && <Preview html={html} />}
+            {toolMode === 'outline' && (
               <OutlineContainer>
                 <Outline
                   outline={outline}
@@ -101,28 +102,28 @@ export const Main = React.memo(function Main({
                 />
               </OutlineContainer>
             )}
-            {toolMode === "help" && <Help />}
+            {toolMode === 'help' && <Help />}
           </PreviewContainer>
         </SideTools>
       )}
     </>
-  );
-});
+  )
+})
 
 const OutlineContainer = styled.div`
   padding: 10px;
-`;
+`
 
 const Container = styled.div`
   flex: 1;
   height: 100vh;
-`;
+`
 
 const Centered = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-`;
+`
 
 const EditorContainer = styled.div`
   width: 100%;
@@ -130,17 +131,17 @@ const EditorContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   padding-top: 8px;
-`;
+`
 
 const SideTools = styled.div`
   flex: 1;
   height: 100vh;
-`;
+`
 
 const ToolTabsContainer = styled.div`
   height: 32px;
   color: white;
-`;
+`
 
 const PreviewContainer = styled.div`
   height: calc(100vh - 32px);
@@ -148,15 +149,15 @@ const PreviewContainer = styled.div`
   overflow-x: auto;
   overflow-y: auto;
   background: #eee;
-`;
+`
 
 const TabButton = styled.div<{ selected: boolean }>`
-  background-color: ${(p: any) => (p.selected ? "#eee" : "#272822")};
-  color: ${(p: any) => (p.selected ? "#272822" : "#eee")};
-  cursor: ${(p: any) => (p.selected ? "auto" : "pointer")};
+  background-color: ${(p: any) => (p.selected ? '#eee' : '#272822')};
+  color: ${(p: any) => (p.selected ? '#272822' : '#eee')};
+  cursor: ${(p: any) => (p.selected ? 'auto' : 'pointer')};
   display: inline-flex;
   height: 100%;
   min-width: 80px;
   align-items: center;
   justify-content: center;
-`;
+`

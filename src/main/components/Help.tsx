@@ -1,5 +1,6 @@
-import React from "react";
+import React from 'react'
 
+// eslint-disable-next-line react/display-name
 export const Help = React.memo(() => {
   return (
     <div style={{ padding: 10 }}>
@@ -14,5 +15,5 @@ export const Help = React.memo(() => {
         <dd>Switch editor-mode</dd>
       </dl>
     </div>
-  );
-});
+  )
+})

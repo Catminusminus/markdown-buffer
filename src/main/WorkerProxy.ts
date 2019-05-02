@@ -1,3 +1,3 @@
-import * as Comlink from "comlinkjs";
+import * as Comlink from 'comlinkjs'
 
-export default Comlink.proxy(new Worker("../worker/index.ts"));
+export default Comlink.proxy(new Worker('../worker/index.ts'))

@@ -1,23 +1,23 @@
-export type Item = {
-  raw: string;
-  html: string;
-  id: string;
-  updatedAt: number;
-};
+export interface Item {
+  raw: string
+  html: string
+  id: string
+  updatedAt: number
+}
 
 export type ItemWithOutline = Item & {
-  outline: Array<any>;
-};
+  outline: any[]
+}
 
-export type EditorMode = "textarea" | "codemirror" | "monaco";
-export type ToolMode = "preview" | "outline" | "help";
+export type EditorMode = 'textarea' | 'codemirror' | 'monaco'
+export type ToolMode = 'preview' | 'outline' | 'help'
 
-export type AppState = {
-  wordCount: number;
-  raw: string;
-  html: string;
-  outline: Array<any>;
-  showPreview: boolean;
-  toolMode: ToolMode;
-  editorMode: EditorMode;
-};
+export interface AppState {
+  wordCount: number
+  raw: string
+  html: string
+  outline: any[]
+  showPreview: boolean
+  toolMode: ToolMode
+  editorMode: EditorMode
+}

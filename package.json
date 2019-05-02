@@ -26,6 +26,7 @@
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-hooks": "^1.6.0",
+    "eslint-plugin-standard": "^4.0.0",
     "husky": "^2.1.0",
     "lint-staged": "^8.1.5",
     "netlify-cli": "^2.6.0",
@@ -36,6 +37,8 @@
   },
   "dependencies": {
     "asciidoctor": "^2.0.2",
+    "asciidoctor-highlight.js": "^0.2.0",
+    "asciidoctor-katex": "^0.3.0",
     "codemirror": "^5.42.2",
     "comlinkjs": "^3.0.3",
     "core-js": "^2.5.7",

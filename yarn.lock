@@ -1490,6 +1490,20 @@ ascii-table@0.0.9:
   resolved "https://registry.yarnpkg.com/ascii-table/-/ascii-table-0.0.9.tgz#06a6604d6a55d4bf41a9a47d9872d7a78da31e73"
   integrity sha1-BqZgTWpV1L9BqaR9mHLXp42jHnM=
 
+asciidoctor-highlight.js@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/asciidoctor-highlight.js/-/asciidoctor-highlight.js-0.2.0.tgz#50fbe198019c44538cf1a07b62b039ab4737a040"
+  integrity sha512-jMbAghSIlspL8hsi3KPb5RSleE2xoURUOfF0/+ROmfkqYm6n3BKToWV0UknC5NlKTuZsCrGO0k7nIIFcPPKHTA==
+  dependencies:
+    highlight.js "^9.0.0"
+
+asciidoctor-katex@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/asciidoctor-katex/-/asciidoctor-katex-0.3.0.tgz#624485239227fc79f80b256960e78a560ad9a786"
+  integrity sha512-p32u6F3+wep2yDHvW+gzmv5nh4P8JRIVhjtSxasrRZY2WNMSnYs2mdUJGuxWS6/XAZamQc50CLAKDW9Q+EJ/Ew==
+  dependencies:
+    katex ">=0.9.0 <1.0.0"
+
 asciidoctor-opal-runtime@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/asciidoctor-opal-runtime/-/asciidoctor-opal-runtime-0.3.0.tgz#df327a870ddd3cd5eb0e162d64ed4dcdd3fe3fee"
@@ -3635,6 +3649,11 @@ eslint-plugin-react@^7.12.4:
     prop-types "^15.6.2"
     resolve "^1.9.0"
 
+eslint-plugin-standard@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-standard/-/eslint-plugin-standard-4.0.0.tgz#f845b45109c99cd90e77796940a344546c8f6b5c"
+  integrity sha512-OwxJkR6TQiYMmt1EsNRMe5qG3GsbjlcOhbGUBY4LtavF9DsLaTcoR+j2Tdjqi23oUwKNUqX7qcn5fPStafMdlA==
+
 eslint-scope@^4.0.0, eslint-scope@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-4.0.3.tgz#ca03833310f6889a3264781aa82e63eb9cfe7848"
@@ -4708,7 +4727,7 @@ hex-color-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
 
-highlight.js@~9.15.0:
+highlight.js@^9.0.0, highlight.js@~9.15.0:
   version "9.15.6"
   resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.15.6.tgz#72d4d8d779ec066af9a17cb14360c3def0aa57c4"
   integrity sha512-zozTAWM1D6sozHo8kqhfYgsac+B+q0PmsjXeyDrYIHHcBN0zTVT66+s2GW1GZv7DbyaROdLXKdabwS/WqPyIdQ==
@@ -5610,7 +5629,7 @@ jwt-decode@^2.2.0:
   resolved "https://registry.yarnpkg.com/jwt-decode/-/jwt-decode-2.2.0.tgz#7d86bd56679f58ce6a84704a657dd392bba81a79"
   integrity sha1-fYa9VmefWM5qhHBKZX3TkruoGnk=
 
-katex@^0.10.0:
+"katex@>=0.9.0 <1.0.0", katex@^0.10.0:
   version "0.10.1"
   resolved "https://registry.yarnpkg.com/katex/-/katex-0.10.1.tgz#5bb0b72bf19cecfc1fa217a9261760e5d301efff"
   integrity sha512-iZXZ2L8pEP7HXBLAaeWkdLxnoRQ8Fdks8IuIVt01tYb+D8e0em5JYgfe6J48wXsuEr512IRCN5Kvwb9FjZH6kg==
