@@ -42,6 +42,7 @@ $ y = x^3 + 2ax^2 + b $
 
 const initialAsciidocText = String.raw`= AsciiDoc Buffer
 :stem: latexmath
+:plantuml-server-url: http://www.plantuml.com/plantuml
 
 * Desktop PWA Support
 * Autosave
@@ -72,6 +73,14 @@ class Foo {
 ++++
 \int_0^\infty f(x) dx
 ++++
+
+== PlantUML
+
+[plantuml]
+----
+alice -> bob
+bob ..> alice
+----
 `
 
 export const initialText = initialAsciidocText

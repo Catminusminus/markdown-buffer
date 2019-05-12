@@ -39,6 +39,7 @@
     "asciidoctor": "^2.0.2",
     "asciidoctor-highlight.js": "^0.2.0",
     "asciidoctor-katex": "^0.3.0",
+    "asciidoctor-plantuml": "^1.1.13",
     "codemirror": "^5.42.2",
     "comlinkjs": "^3.0.3",
     "core-js": "^2.5.7",

@@ -1,10 +1,12 @@
 import Asciidoctor from 'asciidoctor'
 import AsciidoctorKatex from 'asciidoctor-katex'
 import HighlightJsExt from 'asciidoctor-highlight.js'
+import PlantUml from 'asciidoctor-plantuml'
 
 const asciidoctor = Asciidoctor()
 AsciidoctorKatex.register(asciidoctor.Extensions)
 HighlightJsExt.register(asciidoctor.Extensions)
+PlantUml.register(asciidoctor.Extensions)
 
 let outline: any = []
 const defaultProcessor = asciidoctor
