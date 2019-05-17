@@ -1,10 +1,12 @@
 {
+  "files.autoSave": "off",
   "eslint.autoFixOnSave": true,
   "eslint.enable": true,
+  "eslint.trace.server": "messages",
   "eslint.validate": [
     "javascript",
     "javascriptreact",
-    "typescript",
-    "typescriptreact"
+    { "language": "typescript", "autoFix": true },
+    { "language": "typescriptreact", "autoFix": true }
   ]
 }
